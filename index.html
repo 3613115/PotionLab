@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Potion Lab is a cozy browser potion crafting and idle progression game." />
+  <title>Potion Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="ambient ambient-three"></div>
+
+  <main class="game-shell">
+    <header class="hero card">
+      <div>
+        <p class="eyebrow">Cozy Magical Crafting</p>
+        <h1>Potion Lab</h1>
+        <p class="subtitle">Gather enchanted ingredients, brew glowing potions, sell them for coins, and grow your tiny laboratory.</p>
+      </div>
+      <div class="header-actions">
+        <button id="muteButton" class="ghost-button" type="button" aria-pressed="false">🔊 Sound On</button>
+        <button id="resetButton" class="danger-button" type="button">Reset Progress</button>
+      </div>
+    </header>
+
+    <section class="stats-grid" aria-label="Main laboratory stats">
+      <article class="stat-card card">
+        <span class="stat-icon">🪙</span>
+        <div>
+          <span class="stat-label">Coins</span>
+          <strong id="coinsValue">0</strong>
+        </div>
+      </article>
+      <article class="stat-card card">
+        <span class="stat-icon">✨</span>
+        <div>
+          <span class="stat-label">Experience</span>
+          <strong><span id="experienceValue">0</span>/<span id="experienceNeededValue">25</span></strong>
+        </div>
+      </article>
+      <article class="stat-card card">
+        <span class="stat-icon">🏵️</span>
+        <div>
+          <span class="stat-label">Lab Level</span>
+          <strong id="labLevelValue">1</strong>
+        </div>
+      </article>
+      <article class="stat-card card">
+        <span class="stat-icon">⚗️</span>
+        <div>
+          <span class="stat-label">Potions Brewed</span>
+          <strong id="totalBrewedValue">0</strong>
+        </div>
+      </article>
+    </section>
+
+    <div class="content-grid">
+      <section class="card panel ingredients-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Gather</p>
+            <h2>Ingredients</h2>
+          </div>
+          <span class="hint">Click a card to collect</span>
+        </div>
+        <div id="ingredientsList" class="ingredients-list" aria-live="polite"></div>
+      </section>
+
+      <section class="card cauldron-panel" aria-label="Potion brewing station">
+        <div class="section-heading centered">
+          <div>
+            <p class="eyebrow">Brew</p>
+            <h2>Moonlit Cauldron</h2>
+          </div>
+        </div>
+
+        <div id="cauldron" class="cauldron" role="img" aria-label="A glowing magical cauldron full of potion light">
+          <div class="bubble bubble-one"></div>
+          <div class="bubble bubble-two"></div>
+          <div class="bubble bubble-three"></div>
+          <div class="cauldron-glow"></div>
+          <div class="cauldron-rim"></div>
+          <div class="potion-surface"></div>
+          <div class="cauldron-body">
+            <div class="shine"></div>
+          </div>
+          <div class="cauldron-foot left"></div>
+          <div class="cauldron-foot right"></div>
+        </div>
+
+        <label class="recipe-picker" for="recipeSelect">Choose a recipe</label>
+        <select id="recipeSelect" aria-label="Select potion recipe"></select>
+        <button id="brewButton" class="primary-button" type="button">Brew Potion</button>
+        <p id="brewMessage" class="brew-message" aria-live="polite">Select a recipe and warm the cauldron.</p>
+      </section>
+
+      <section class="card panel recipe-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Discover</p>
+            <h2>Recipe Book</h2>
+          </div>
+          <span id="recipesDiscoveredValue" class="pill">0/4 found</span>
+        </div>
+        <div id="recipeBook" class="recipe-book"></div>
+      </section>
+
+      <section class="card panel upgrades-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Improve</p>
+            <h2>Lab Upgrades</h2>
+          </div>
+          <span class="hint">Costs rise each level</span>
+        </div>
+        <div id="upgradesList" class="upgrades-list"></div>
+      </section>
+
+      <section class="card panel progress-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Progress</p>
+            <h2>Laboratory Notes</h2>
+          </div>
+        </div>
+        <ul class="notes-list">
+          <li>Ingredient gains improve with matching upgrades.</li>
+          <li>Potion value rises with Lab Level and Better Cauldron.</li>
+          <li>Unknown recipes reveal themselves after the first successful brew.</li>
+          <li>Your progress saves automatically in this browser.</li>
+        </ul>
+        <div class="level-progress" aria-label="Experience progress to next level">
+          <div class="level-progress-label">
+            <span>Next Level</span>
+            <span id="levelProgressText">0%</span>
+          </div>
+          <div class="progress-track">
+            <div id="levelProgressBar" class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toastStack" class="toast-stack" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
